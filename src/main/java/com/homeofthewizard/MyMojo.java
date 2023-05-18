@@ -3,6 +3,7 @@ package com.homeofthewizard;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.plexus.logging.Logger;
+import org.springframework.vault.core.VaultTemplate;
 
 import javax.inject.Inject;
 
@@ -15,6 +16,8 @@ public class MyMojo extends AbstractMojo
     private MyComponent component;
     @Inject
     private MySpringBean mySpringBean;
+    @Inject
+    private VaultTemplate vaultTemplate;
 
     public void execute()
     {
