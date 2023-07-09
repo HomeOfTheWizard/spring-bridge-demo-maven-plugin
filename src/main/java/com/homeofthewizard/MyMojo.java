@@ -1,6 +1,5 @@
 package com.homeofthewizard;
 
-import com.homeofthewizard.hellolib.MyHelloer;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.plexus.logging.Logger;
@@ -13,22 +12,21 @@ public class MyMojo extends AbstractMojo
 {
     private final Logger logger;
     private final MySir component;
-    private final MyHelloer helloer;
+//    private final MyHelloer helloer;
     private final VaultTemplate vaultTemplate;
 
     @Inject
-    public MyMojo(Logger logger, MySir component, MyHelloer helloer, VaultTemplate vaultTemplate) {
+    public MyMojo(Logger logger, MySir component, /*MyHelloer helloer,*/ VaultTemplate vaultTemplate) {
         this.logger = logger;
         this.component = component;
-        this.helloer = helloer;
+//        this.helloer = helloer;
         this.vaultTemplate = vaultTemplate;
     }
 
     public void execute()
     {
         logger.info("executing mojo");
-
-        helloer.hello();
+//        helloer.hello();
         component.hello();
     }
 }
