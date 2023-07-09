@@ -47,37 +47,19 @@
             <version>1</version>
         </dependency>
 
-        <!-- Spring container and bean support -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>5.3.16</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.3.16</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>5.3.16</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.guice</groupId>
-            <artifactId>spring-guice</artifactId>
-            <version>2.0.3-SNAPSHOT</version>
-        </dependency>
-
         <!-- 3rd party Spring libraries -->
         <dependency>
             <groupId>org.springframework.vault</groupId>
             <artifactId>spring-vault-core</artifactId>
             <version>2.3.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.homeofthewizard</groupId>
+            <artifactId>provider-generator-maven-plugin</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -92,38 +74,53 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-                </configuration>
+                <version>3.9.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>com.homeofthewizard</groupId>
+                <artifactId>spring-provider-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.vault</groupId>
+                        <artifactId>spring-vault-core</artifactId>
+                        <version>2.3.3</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
-                        <id>mojo-descriptor</id>
+                        <id>generate</id>
                         <goals>
-                            <goal>descriptor</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>help-goal</id>
-                        <goals>
-                            <goal>helpmojo</goal>
+                            <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <generatedProvidersSourcePath>${project.build.sourceDirectory}</generatedProvidersSourcePath>
+                    <contextConfigClasses>
+                        <contextConfigClass>org.springframework.vault.config.EnvironmentVaultConfiguration</contextConfigClass>
+<!--                        <contextConfigClass>com.homeofthewizard.MySpringConfig</contextConfigClass>-->
+                    </contextConfigClasses>
+                    <applicationPropertiesFile>src\main\resources\vault-config.properties</applicationPropertiesFile>
+                </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.eclipse.sisu</groupId>
                 <artifactId>sisu-maven-plugin</artifactId>
                 <version>0.9.0.M1</version>
                 <executions>
                     <execution>
-                        <id>generate-index</id>
+                        <id>index-dependencies</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>main-index</goal>
+                            <goal>index</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
