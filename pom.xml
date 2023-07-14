@@ -103,10 +103,9 @@
                 </executions>
                 <configuration>
                     <contextConfigClasses>
-                        <contextConfigClass>org.springframework.vault.config.EnvironmentVaultConfiguration</contextConfigClass>
-<!--                        <contextConfigClass>com.homeofthewizard.hellolib.MySpringConfig</contextConfigClass>-->
+<!--                        <contextConfigClass>org.springframework.vault.config.EnvironmentVaultConfiguration</contextConfigClass>-->
+                        <contextConfigClass>com.homeofthewizard.hellolib.MySpringConfig</contextConfigClass>
                     </contextConfigClasses>
-<!--                    <applicationPropertiesFile>src\main\resources\application.properties</applicationPropertiesFile>-->
                 </configuration>
             </plugin>
 
