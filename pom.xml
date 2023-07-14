@@ -103,7 +103,7 @@
                 </executions>
                 <configuration>
                     <contextConfigClasses>
-<!--                        <contextConfigClass>org.springframework.vault.config.EnvironmentVaultConfiguration</contextConfigClass>-->
+                        <contextConfigClass>org.springframework.vault.config.EnvironmentVaultConfiguration</contextConfigClass>
                         <contextConfigClass>com.homeofthewizard.hellolib.MySpringConfig</contextConfigClass>
                     </contextConfigClasses>
                 </configuration>
