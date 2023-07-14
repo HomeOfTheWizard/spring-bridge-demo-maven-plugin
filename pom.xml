@@ -56,10 +56,9 @@
 
         <dependency>
             <groupId>com.homeofthewizard</groupId>
-            <artifactId>provider-generator-maven-plugin</artifactId>
+            <artifactId>spring-provider-maven-plugin</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
 
     </dependencies>
 
@@ -103,12 +102,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <generatedProvidersSourcePath>${project.build.sourceDirectory}</generatedProvidersSourcePath>
                     <contextConfigClasses>
                         <contextConfigClass>org.springframework.vault.config.EnvironmentVaultConfiguration</contextConfigClass>
-<!--                        <contextConfigClass>com.homeofthewizard.MySpringConfig</contextConfigClass>-->
+<!--                        <contextConfigClass>com.homeofthewizard.hellolib.MySpringConfig</contextConfigClass>-->
                     </contextConfigClasses>
-                    <applicationPropertiesFile>src\main\resources\vault-config.properties</applicationPropertiesFile>
+<!--                    <applicationPropertiesFile>src\main\resources\application.properties</applicationPropertiesFile>-->
                 </configuration>
             </plugin>
 
