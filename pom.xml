@@ -94,12 +94,6 @@
                             <goal>generate</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>clean</id>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
                 </executions>
                 <configuration>
                     <contextConfigClasses>
